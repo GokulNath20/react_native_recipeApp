@@ -1,0 +1,161 @@
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
+
+window.DOMParser = require("xmldom").DOMParser;
+
+const RecipeDetails = ({ route }) => {
+  const { itemId, itemName, itemImage } = route.params;
+
+  const text = `<recipeTypes>
+  <recipe category="Breakfast">
+        <menu> Cookies 
+            <steps>1. Preheat the oven to 375 degrees.
+\n2. COMBINE shortening, brown sugar,milk and vanilla in a large bowl. Beat at medium speed of electric mixer until well blended. Beat in egg. combine flour, salt and baking soda. Mix into shortening mixture until just blended. Stir in chocolate chips.
+\n3. Drop by rounded measuring tablespoons 3 inches apart onto a Ungreased baking sheet.
+\n4. BAKE 8 to 10 minutes for chewy cookies, or 11 to 13 minutes for crisp cookies. Cool 2 minutes on cooling racks.
+            </steps>
+        </menu>
+        <menu> Omelete 
+                <steps>1. Beat the eggs: Use two or three eggs per omelette, depending on how hungry you are. Beat the eggs lightly with a fork.
+\n2. Melt the butter: Use an 8-inch nonstick skillet for a 2-egg omelette, a 9-inch skillet for 3 eggs. Melt the butter over medium-low heat, and keep the temperature low and slow when cooking the eggs so the bottom doesn’t get too brown or overcooked.
+\n3. Add the eggs: Let the eggs sit for a minute, then use a heatproof silicone spatula to gently lift the cooked eggs from the edges of the pan. Tilt the pan to allow the uncooked eggs to flow to the edge of the pan.
+\n4. Fill the omelette: Add the filling—but don’t overstuff the omelette—when the eggs begin to set. Cook for a few more seconds
+\n5. Fold and serve: Fold the omelette in half. Slide it onto a plate with the help of a silicone spatula.
+                </steps>
+            </menu>
+        <menu> Waffles 
+            <steps>1. Ingredients + Tools: 1 3/4 cup flour, 2 tablespoons sugar, 2 eggs, 1 3/4 cups milk (whatever type you like!), 1 tablespoon baking powder, 1/2 cup oil OR melted butter, 1 teaspoon vanilla extract, pinch of salt
+\n2. Mix Up the Wet and Dry Ingredients.
+\n3. Preheat the Waffle Iron + Figure Out How Much Batter to Use
+\n4. Cook!
+            </steps>
+        </menu>
+        <menu> Sausage Breakfast Wrap 
+            <steps>1. In a large skillet, brown sausage. Drain, reserving 2 tablespoons drippings. Saute the onion, green pepper and mushrooms in drippings until tender.
+\n2. In another skillet, melt butter over medium-high heat. Add eggs; cook and stir until set.
+\n3. Divide sausage mixture among tortillas; top with eggs and cheese. Fold bottom of tortilla over filling and roll up. Serve with salsa if desired.
+            </steps>
+        </menu>
+        
+  </recipe>
+
+  <recipe category="Lunch">
+        <menu> Banana Leaf Rice Meal 
+            <steps>1. Add the oil, rice, and salt to a pan and stir for two minutes until aromatic. Then add 4 cups of water, and keep the flame low.
+\n2. Cook until the rice is soft to the touch. Later, cover the pan with banana leaf and simmer for 1 minute.
+\n3. Serve the hot rice on top of the banana leaf, pairing it with your favorite gravies and side dishes.
+            </steps>
+        </menu>
+        <menu> Mee Curry 
+            <steps>1. Start by prepping the topping ingredients. I used King Oyster mushrooms, eggplant, tofu puffs, long beans, Yuchoy, bean sprouts, and homemade wontons.
+\n2. Simply sauté mushrooms in oil until aromatic and to draw out the moisture. Then, fry the eggplant for about 45 seconds and drain them on a paper towel to absorb excess oil.
+\n3. To make the curry, add the desired amount of sambal paste in a heated non-stick pan. I used this Easy Vegan Sambal which is not as spicy compared to store-bought.
+\n4. Add in vegetable stock and bring the mixture to a rolling boil. Add the tofu puffs, coconut milk, and season accordingly. If you have curry leaves, add them in as well to give the curry an amazing aromatic flavor.
+\n5. Now that you have successfully made the broth, it’s time to put it all together. Feel free to use noodles of your choice such as vermicelli, flat rice noodles, shirataki, or yellow noodles. Blanch bean sprouts, long beans, and YuChoy (Choy Sum) in boiling water for a minute, then set aside. Then, cook the noodles of choice as directed.
+\n6. Place noodles and blanched vegetables in a bowl, and ladle curry over, then top with fried wonton. Serve with more sambal and a squeeze of lime juice for a delicious meal.
+            </steps>
+        </menu>
+        <menu> Nasi Lemak 
+            <steps>1. Start with the sambal. Remove and discard the stalks from the dried chillies, then roughly break them up and put in a small pan of boiling water.
+\n2. Simmer for 15 minutes, then drain, reserving a little of the cooking water (a teaspoon or so). Meanwhile, trim and deseed the fresh chillies and peel and roughly chop the shallots, garlic and ginger.
+\n3. Whizz or pound the soaked dried chillies with their reserved soaking liquid to make a paste, then add the fresh chillies, shallots, garlic and ginger, break down into a puree, then crumble in the belacan. Heat the oil in a wok or small pan over a medium heat, add the paste and fry, stirring often so it doesn’t burn, until the oil separates out; add a little water if it begins to stick.
+\n4. Stir in a teaspoon of tamarind, a teaspoon of sugar and a good pinch of salt, adjust to taste, then turn down the heat and fry, still stirring regularly, until the oil separates again.
+\n5. Rinse the rice, then soak it in cold water for 20 minutes. Drain and put in a medium saucepan with the coconut milk – if there’s a big lump of cream on top, save this for later. Add salt and enough water to come up to the first joint of a finger poked in to the top of the rice. Tie the pandan leaves in a knot, so they fit the pot better, then nestle into the rice.
+\n6. Stir well, bring to a simmer, then cover, turn down the heat slightly and leave to cook for 10 minutes. Quickly add the coconut cream, put a clean tea towel on top, cover again and leave for 15 minutes.
+\n7. Fry the peanuts in a dry pan until you can smell them toasting, then set aside. Heat the oil in the same pan, fry the anchovies until crisp and golden, then tip them on to a piece of kitchen paper to drain.
+\n8. Boil the eggs for seven to nine minutes, depending on how hard-boiled you like them, then cool under running water, peel and halve. Cut the cucumber into thick slices.
+\n9. To serve, put a mound of rice on each plate, add a spoonful of sambal to the side, then add the peanuts, anchovies, eggs and cucumber alongside. Serve the rest of the sambal on the table for people to help themselves.
+            </steps>
+        </menu>
+        <menu> Rice Ground Chicken Chilli 
+            <steps>1. Heat oil in a large Dutch oven over medium-high heat. Add onion, bell pepper and garlic; cook, stirring often, until tender, about 5 minutes. Add ground chicken; cook, stirring occasionally, until the chicken crumbles and is no longer pink and the liquid has evaporated, about 8 minutes. Stir in tomato paste, chili powder, oregano, coriander, salt and pepper; cook, stirring constantly, until the tomato paste caramelizes and the spices are fragrant, about 1 minute.
+\n2. Add beans, tomatoes and broth. Bring to a boil over medium-high heat; reduce heat to medium-low and simmer, stirring occasionally, until the vegetables are softened and the flavors meld, about 20 minutes.
+\n3. Divide the chili among 6 bowls. Top each with 2 tablespoons each cheese, yogurt and scallions. Serve with lime wedges, if desired.
+            </steps>
+        </menu>
+  </recipe>
+
+  <recipe category="Dinner">
+        <menu> Capati
+            <steps>1. Knead a smooth dough. To begin with, take a large-sized bowl. Put two cups of flour along with a cup of water, salt and ghee in it. Mix well and start kneading a dough. Make sure that the dough is not too thick nor too thin. It has to be of a soft and pliable consistency. Add water to get the consistency right. Keep kneading for a while.
+\n2. Flatten the dough balls. Now roll out few balls from the prepared dough. Place them on a flat surface, flatten them further with the help of a rolling pin. Keep using the flour in order to prevent the rolls from sticking to the surface. Once the chapatis get the perfect round shape, place a pan on medium flame.
+\n3. Cook the chapati. Once heated enough, put the chapati on the pan and cook from both sides. Use a pair of tongs to flip over to the other side. Keep the flame to medium as too much heat might burn the chapati. Check for the little brown spots. Once they start appearing, the chapati will start to puff, indicating that it's completely cooked. Once done, transfer in a kitchen towel to keep them warm. Serve along any gravy or curry of your choice.
+\n4. If you are someone who loves the richness of Ghee, then you can add some ghee while kneading the dough and with a pinch of salt this adds a nice aroma and taste to the Chapatis.
+            </steps>
+        </menu>
+        <menu> Maggi Goreng 
+            <steps>1. In a wok, heat oil and fry onions until it just begin to brown.
+\n2. Add tofu and vegetables and stir-fry until vegetables soften.
+\n3. Add an egg. Stir in cooked noodles, Maggi seasoning and dark soya sauce.
+\n4. Mix well with a wok spatula and stir continuously for a few minutes. Serve hot.
+            </steps>
+        </menu>
+        <menu> Nasi Goreng 
+            <steps>1. First, in a wok with a little bit of oil, add in the garlic, onions, chilies, ginger and anchovies. Fry until they are fragrant and the anchovies are crispy.
+\n2. Then, remove and place it into a pestle and mortar. Pound the ingredients until it becomes a fine paste. Set aside.
+\n3. In the same wok with the leftover oil, add in the pounded ingredients and lightly fry it.
+\n4. Push the ingredients inside and crack 2 eggs in. Pour over the soy sauce onto the eggs and let it cook for 10 seconds then break the eggs up and mix it up with the chili paste.
+\n5. Then, add in the frozen peas and the cooked rice. Mix it all together until combined. Add in some salt and continue mixing. Cook until the rice starts to steam up.\
+\n6. Once done, remove from the heat and serve immediately in a bowl.
+\n7. Serve the nasi goreng along side with some fried egg or cut chilies if you want it extra spicy !
+            </steps>
+        </menu>
+        <menu> Tomyam 
+            <steps>1. Make the shrimp stock by sauteing shrimp shells and/or heads until the bottom of the pot starts collecting browned bits.
+\n2. Deglaze with water and scrape all the stuck bits from the bottom of the pot. If using shrimp heads, use tongs to squeeze out the tasty tomalley inside.
+\n3. Simmer for about 45 minutes. You can add some chopped onions to the simmering stock right now if you want some added flavour.
+\n4. Strain the stock and add the lemongrass, galangal, makrut lime leaves and Thai chilies. Simmer for 5 minutes.
+\n5. Add the mushrooms and cook for 1-2 minutes. Add the shrimp, bring the stock back to a simmer and then turn off the heat.
+\n6. Allow the residual heat of the soup to fully cook the shrimp for the next 2 minutes.
+\n7. Add the Thai chili paste and fish sauce and stir to dissolve the chili paste.
+\n8. Add lime juice and then taste and adjust, adding the sugar only if needed.
+\n9. It's ready to serve! Note: the herbs are for infusion purposes only and are not meant to be eaten; however, they're traditionally left in the soup for garnish.
+            </steps>
+        </menu>
+  </recipe>
+</recipeTypes>`;
+
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(text);
+
+  var recipeDetails =
+    xmlDoc.getElementsByTagName("steps")[itemId].childNodes[0].nodeValue;
+
+  return (
+    <SafeAreaView>
+      <ScrollView>
+        <View
+          style={{
+            padding: 20,
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Text style={{ paddingBottom: 10, fontWeight: "bold", fontSize: 24 }}>
+            {itemName}
+          </Text>
+          <Text>{recipeDetails}</Text>
+          <Image style={styles.Image} source={itemImage} />
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
+const styles = StyleSheet.create({
+  Image: {
+    resizeMode: "contain",
+    height: 400,
+    width: 400,
+  },
+});
+
+export default RecipeDetails;
