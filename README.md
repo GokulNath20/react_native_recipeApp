@@ -4,6 +4,7 @@
 - Visual Studio Code
 - React Native
 - Javascript
+- Firebase
 
 A recipe app with login and register using firebase authentication. The logged in user will be able to view the recipe types, ingredients and steps to make it based on the option they choose.
 
